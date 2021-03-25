@@ -1,0 +1,54 @@
+{
+    "name": "shinsenter/defer-laravel",
+    "description": "🚀 A Laravel package that focuses on minimizing payload size of HTML document and optimizing processing on the browser when rendering the web page.",
+    "keywords": [
+        "shinsenter",
+        "defer-laravel"
+    ],
+    "homepage": "https://github.com/shinsenter/defer-laravel",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Mai Nhut Tan",
+            "email": "shin@shin.company",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "^6.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0",
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Shinsenter\\DeferLaravel\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Shinsenter\\DeferLaravel\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Shinsenter\\DeferLaravel\\DeferLaravelServiceProvider"
+            ],
+            "aliases": {
+                "DeferLaravel": "Shinsenter\\DeferLaravel\\DeferLaravelFacade"
+            }
+        }
+    }
+}
