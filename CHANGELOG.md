@@ -1,7 +1,7 @@
 # Changelog
 
-All notable changes to `defer-laravel` will be documented in this file
+All notable changes to `shinsenter/defer-laravel` will be documented in this file
 
-## 1.0.0 - 201X-XX-XX
+## 1.0.0 - 2021/04/14
 
-- initial release
+- Initial release

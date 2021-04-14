@@ -3,7 +3,19 @@
     "description": "🚀 A Laravel package that focuses on minimizing payload size of HTML document and optimizing processing on the browser when rendering the web page.",
     "keywords": [
         "shinsenter",
-        "defer-laravel"
+        "defer-laravel",
+        "defer.php",
+        "laravel",
+        "lumen",
+        "lazyload",
+        "loading lazy",
+        "lazy loading",
+        "lazyload image",
+        "lazyload video",
+        "lazyload font",
+        "lazyload js",
+        "lazyload css",
+        "performance"
     ],
     "homepage": "https://github.com/shinsenter/defer-laravel",
     "license": "MIT",
@@ -12,31 +24,52 @@
         {
             "name": "Mai Nhut Tan",
             "email": "shin@shin.company",
-            "role": "Developer"
+            "homepage": "https://code.shin.company",
+            "role": "Owner"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/shinsenter/defer-laravel/issues",
+        "source": "https://github.com/shinsenter/defer-laravel"
+    },
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/shinsenter/defer-laravel/stargazers"
+        },
+        {
+            "type": "paypal",
+            "url": "https://www.patreon.com/appseeds"
+        },
+        {
+            "type": "patreon",
+            "url": "https://www.patreon.com/shinsenter"
         }
     ],
     "require": {
-        "php": "^7.1",
-        "illuminate/support": "^6.0"
+        "php": "^5.6|^7|^8",
+        "illuminate/support": "^5|^6|^7|^8|^9",
+        "illuminate/contracts": "^5|^6|^7|^8|^9",
+        "symfony/http-foundation": "^4|^5",
+        "symfony/http-kernel": "^4.3.4|^5",
+        "shinsenter/defer.php": "^2.2"
     },
     "require-dev": {
-        "orchestra/testbench": "^4.0",
-        "phpunit/phpunit": "^8.0"
+        "laravel/framework": "^5|^6|^7|^8"
+    },
+    "suggest": {
+        "ext-mbstring": "*"
     },
     "autoload": {
         "psr-4": {
-            "Shinsenter\\DeferLaravel\\": "src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Shinsenter\\DeferLaravel\\Tests\\": "tests"
+            "AppSeeds\\DeferLaravel\\": "src"
         }
     },
     "scripts": {
-        "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
-
+        "pull": [
+            "rm -rf ./vendor/ ./composer.lock",
+            "composer update -o -a -n --no-dev --prefer-dist --ansi"
+        ]
     },
     "config": {
         "sort-packages": true
@@ -44,11 +77,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Shinsenter\\DeferLaravel\\DeferLaravelServiceProvider"
-            ],
-            "aliases": {
-                "DeferLaravel": "Shinsenter\\DeferLaravel\\DeferLaravelFacade"
-            }
+                "AppSeeds\\DeferLaravel\\DeferLaravelServiceProvider"
+            ]
         }
     }
 }

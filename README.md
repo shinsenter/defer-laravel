@@ -1,53 +1,158 @@
-# Very short description of the package
+# shinsenter/defer-laravel
+
+🚀 A Laravel package that focuses on minimizing payload size of HTML document and optimizing processing on the browser when rendering the web page.
+
+- **Package**: [shinsenter/defer-laravel](https://packagist.org/packages/shinsenter/defer-laravel)
+- **Version**: 1.0.0
+- **Author**: Mai Nhut Tan <shin@shin.company>
+- **Copyright**: 2021 AppSeeds <https://code.shin.company/>
+- **License**: [MIT](https://raw.githubusercontent.com/shinsenter/defer-laravel/master/LICENSE)
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/shinsenter/defer-laravel.svg?style=flat-square)](https://packagist.org/packages/shinsenter/defer-laravel)
 [![Build Status](https://img.shields.io/travis/shinsenter/defer-laravel/master.svg?style=flat-square)](https://travis-ci.org/shinsenter/defer-laravel)
 [![Quality Score](https://img.shields.io/scrutinizer/g/shinsenter/defer-laravel.svg?style=flat-square)](https://scrutinizer-ci.com/g/shinsenter/defer-laravel)
 [![Total Downloads](https://img.shields.io/packagist/dt/shinsenter/defer-laravel.svg?style=flat-square)](https://packagist.org/packages/shinsenter/defer-laravel)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+
+## Features
+
+- [x] Simplify library options
+- [x] Embed defer.js library
+- [x] Normalize DOM elements
+- [x] Fix missing meta tags
+- [x] Fix missing media attributes
+- [x] Preconnect to required origins
+- [x] Preload key requests
+- [x] Prefetch key requests
+- [x] Browser-level image lazy-loading for the web
+- [x] Lazy-load offscreen and hidden iframes
+- [x] Lazy-load offscreen and hidden videos
+- [x] Lazy-load offscreen and hidden images
+- [x] Lazy-load CSS background images
+- [x] Reduce the impact of JavaScript
+- [x] Defer non-critical CSS requests
+- [x] Defer third-party assets
+- [x] Add fallback `<noscript>` tags for lazy-loaded objects
+- [x] Add custom HTML while browser is rendering the page (splashscreen)
+- [x] Attribute to ignore optimizing the element
+- [x] Attribute to ignore lazyloading the element
+- [x] Optimize AMP document
+- [x] Minify HTML output
+
 
 ## Installation
 
-You can install the package via composer:
-
-```bash
-composer require shinsenter/defer-laravel
+Require the `shinsenter/defer-laravel` package in your `composer.json` and update your dependencies:
+```sh
+composer require "shinsenter/defer-laravel"
 ```
 
-## Usage
 
-``` php
-// Usage description here
+## Global usage
+
+To allow optiomization for all of your routes, add the `DeferLaravel` middleware at the top of the `$middleware` property of  `app/Http/Kernel.php` class:
+
+```php
+protected $middleware = [
+  \AppSeeds\DeferLaravel\DeferMiddleware::class,
+    // ...
+];
 ```
 
-### Testing
 
-``` bash
-composer test
+## Configuration
+
+The defaults are set in `config/defer-laravel.php`. Publish the config to copy the file to your own config:
+```sh
+php artisan vendor:publish --tag="defer-laravel"
 ```
+
+
+### Options
+
+View [defer.php options](https://github.com/shinsenter/defer.php/blob/master/README.md#options) for more details.
+
+
+### Lumen
+
+On Lumen, just register the ServiceProvider manually in your `bootstrap/app.php` file:
+
+```php
+$app->register(\AppSeeds\DeferLaravel\DeferLaravelServiceProvider::class);
+```
+
+Also copy the [defer-laravel.php](https://github.com/shinsenter/defer-laravel/blob/master/config/defer-laravel.php) config file to `config/defer-laravel.php` and put it into action:
+
+```php
+$app->configure('defer-laravel');
+```
+
+
+## Global usage for Lumen
+
+To allow CORS for all your routes, add the `DeferLaravel` middleware to the global middleware and set the `paths` property in the config.
+
+```php
+$app->middleware([
+    // ...
+    \AppSeeds\DeferLaravel\DeferMiddleware::class,
+]);
+```
+
 
 ### Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
+
 ## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+
 
 ### Security
 
 If you discover any security related issues, please email shin@shin.company instead of using the issue tracker.
 
-## Credits
-
-- [Mai Nhut Tan](https://github.com/shinsenter)
-- [All Contributors](../../contributors)
 
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-## Laravel Package Boilerplate
 
-This package was generated using the [Laravel Package Boilerplate](https://laravelpackageboilerplate.com).
+## My works
+
+
+### Defer.js
+
+https://github.com/shinsenter/defer.js/
+
+🥇 A super small, super efficient library that helps you lazy load almost everything like images, video, audio, iframes as well as stylesheets, and JavaScript.
+
+
+### defer.php
+
+https://github.com/shinsenter/defer.php/
+
+🚀 A PHP library that aims to help you concentrate on web performance optimization.
+
+
+### Wordpress plugin
+
+https://github.com/shinsenter/defer-wordpress/
+
+⚡️ A native, blazing fast lazy loader. ✅ Legacy browsers support (IE9+). 💯 SEO friendly. 🧩 Lazy load almost anything.
+
+
+## Support my activities
+
+[![Donate via Paypal](https://img.shields.io/badge/Donate-Paypal-blue)](https://www.paypal.me/shinsenter)
+[![Become a sponsor](https://img.shields.io/badge/Donate-Patreon-orange)](https://www.patreon.com/appseeds)
+[![Become a stargazer](https://img.shields.io/badge/Support-Stargazer-yellow)](https://github.com/shinsenter/defer.php/stargazers)
+[![Report an issue](https://img.shields.io/badge/Support-Issues-green)](https://github.com/shinsenter/defer.php/issues/new)
+
+
+* * *
+
+From Vietnam 🇻🇳 with love.
+
