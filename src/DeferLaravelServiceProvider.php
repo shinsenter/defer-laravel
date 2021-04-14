@@ -1,46 +1,35 @@
 <?php
 
-namespace Shinsenter\DeferLaravel;
+/**
+ * 🚀 A Laravel package that focuses on minimizing payload size of HTML document
+ *    and optimizing processing on the browser when rendering the web page.
+ *
+ * @copyright 2021 Mai Nhut Tan https://code.shin.company.
+ * @package   shinsenter/defer-laravel
+ * @see       https://github.com/shinsenter/defer-laravel
+ */
 
-use Illuminate\Support\ServiceProvider;
+namespace AppSeeds\DeferLaravel;
 
-class DeferLaravelServiceProvider extends ServiceProvider
+use AppSeeds\Defer;
+use AppSeeds\Helpers\DeferOptions;
+use Illuminate\Foundation\Application as LaravelApplication;
+use Illuminate\Support\ServiceProvider as BaseServiceProvider;
+use Laravel\Lumen\Application as LumenApplication;
+
+class DeferLaravelServiceProvider extends BaseServiceProvider
 {
     /**
      * Bootstrap the application services.
      */
     public function boot()
     {
-        /*
-         * Optional methods to load your package assets
-         */
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'defer-laravel');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'defer-laravel');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
-
-        if ($this->app->runningInConsole()) {
+        if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('defer-laravel.php'),
-            ], 'config');
-
-            // Publishing the views.
-            /*$this->publishes([
-                __DIR__.'/../resources/views' => resource_path('views/vendor/defer-laravel'),
-            ], 'views');*/
-
-            // Publishing assets.
-            /*$this->publishes([
-                __DIR__.'/../resources/assets' => public_path('vendor/defer-laravel'),
-            ], 'assets');*/
-
-            // Publishing the translation files.
-            /*$this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/defer-laravel'),
-            ], 'lang');*/
-
-            // Registering package commands.
-            // $this->commands([]);
+                $this->configPath() => config_path('defer-laravel.php'),
+            ], 'defer-laravel');
+        } elseif ($this->app instanceof LumenApplication) {
+            $this->app->configure('defer-laravel');
         }
     }
 
@@ -50,11 +39,30 @@ class DeferLaravelServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'defer-laravel');
+        $this->mergeConfigFrom($this->configPath(), 'defer-laravel');
 
         // Register the main class to use with the facade
-        $this->app->singleton('defer-laravel', function () {
-            return new DeferLaravel;
+        $this->app->singleton(Defer::class, function ($app) {
+            return new Defer('', $this->getOptions());
         });
+    }
+
+    protected function configPath()
+    {
+        return __DIR__ . '/../config/defer-laravel.php';
+    }
+
+    protected function getOptions()
+    {
+        $options = $this->app['config']->get('defer-laravel');
+        $default = (new DeferOptions())->getOptionArray();
+
+        foreach ($options as $k => $v) {
+            if (!isset($default[$default])) {
+                unset($options[$k]);
+            }
+        }
+
+        return $options;
     }
 }
