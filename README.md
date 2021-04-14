@@ -50,7 +50,7 @@ composer require "shinsenter/defer-laravel"
 
 ## Global usage
 
-To allow optiomization for all of your routes, add the `DeferLaravel` middleware at the top of the `$middleware` property of  `app/Http/Kernel.php` class:
+To allow `DeferMiddleware` for all of your routes, add the `DeferMiddleware` middleware at the top of the `$middleware` property of  `app/Http/Kernel.php` class:
 
 ```php
 protected $middleware = [
@@ -75,7 +75,7 @@ View [defer.php options](https://github.com/shinsenter/defer.php/blob/master/REA
 
 ### Lumen
 
-On Lumen, just register the ServiceProvider manually in your `bootstrap/app.php` file:
+On Lumen, just register the `DeferServiceProvider` manually in your `bootstrap/app.php` file:
 
 ```php
 $app->register(\AppSeeds\DeferLaravel\DeferServiceProvider::class);
@@ -90,7 +90,7 @@ $app->configure('defer-laravel');
 
 ## Global usage for Lumen
 
-To allow CORS for all your routes, add the `DeferLaravel` middleware to the global middleware and set the `paths` property in the config.
+To allow `DeferMiddleware` for all your routes, add the `DeferMiddleware` middleware to the global middleware.
 
 ```php
 $app->middleware([
