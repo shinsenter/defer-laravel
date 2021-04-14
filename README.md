@@ -70,7 +70,7 @@ php artisan vendor:publish --tag="defer-laravel"
 
 ### Options
 
-View [defer.php options](https://github.com/shinsenter/defer.php/blob/master/README.md#options) for more details.
+View the [defer-laravel.php](https://github.com/shinsenter/defer-laravel/blob/master/config/defer-laravel.php) config file for more details.
 
 
 ### Lumen
