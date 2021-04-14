@@ -12,29 +12,19 @@
 namespace AppSeeds\DeferLaravel;
 
 use AppSeeds\Defer;
-use Closure;
 use Exception;
-use Illuminate\Contracts\Container\Container;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class DeferMiddleware
 {
-    /** @var \Illuminate\Contracts\Container\Container */
-    protected $container;
-
-    public function __construct(Container $container)
-    {
-        $this->container = $container;
-    }
-
     /**
-     * Handle an incoming request. Based on Asm89\Stack\Cors by asm89
+     * Handle an incoming request
      *
      * @param  \Illuminate\Http\Request $request
+     * @param  \Closure                 $next
      * @return Response
      */
-    public function handle($request, Closure $next)
+    public function handle($request, $next)
     {
         // Check if we should handle it
         if (!$this->shouldRun($request)) {
@@ -57,19 +47,20 @@ class DeferMiddleware
     /**
      * Add the headers to the Response, if they don't exist yet.
      *
-     * @return Response
+     * @param  mixed                                      $response
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    protected function optimize(Response $response)
+    protected function optimize($response)
     {
         // Get the HTML
         $html = trim($response->getContent());
 
         // Process the HTML if it is not empty
         if (!empty($html)) {
-            // Initialize an deferjs instance
-            $defer = new Defer();
-
             try {
+                // Initialize an deferjs instance
+                $defer = app(Defer::class);
+
                 // Optimize the response using defer library
                 $optimized = $defer->fromHtml($html)->toHtml();
 
@@ -86,12 +77,13 @@ class DeferMiddleware
     }
 
     /**
-     * Determine if the request has a URI that should pass through the CORS flow.
+     * Determine if the request has a URI that should be optimized
      *
+     * @param  \Illuminate\Http\Request $request
      * @return bool
      */
-    protected function shouldRun(Request $request)
+    protected function shouldRun($request)
     {
-        return !$request->expectsJson();
+        return $request->acceptsHtml();
     }
 }

@@ -78,7 +78,7 @@ View [defer.php options](https://github.com/shinsenter/defer.php/blob/master/REA
 On Lumen, just register the ServiceProvider manually in your `bootstrap/app.php` file:
 
 ```php
-$app->register(\AppSeeds\DeferLaravel\DeferLaravelServiceProvider::class);
+$app->register(\AppSeeds\DeferLaravel\DeferServiceProvider::class);
 ```
 
 Also copy the [defer-laravel.php](https://github.com/shinsenter/defer-laravel/blob/master/config/defer-laravel.php) config file to `config/defer-laravel.php` and put it into action:

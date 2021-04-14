@@ -17,7 +17,7 @@ use Illuminate\Foundation\Application as LaravelApplication;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Laravel\Lumen\Application as LumenApplication;
 
-class DeferLaravelServiceProvider extends BaseServiceProvider
+class DeferServiceProvider extends BaseServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -58,7 +58,7 @@ class DeferLaravelServiceProvider extends BaseServiceProvider
         $default = (new DeferOptions())->getOptionArray();
 
         foreach ($options as $k => $v) {
-            if (!isset($default[$default])) {
+            if (!isset($default[$k])) {
                 unset($options[$k]);
             }
         }

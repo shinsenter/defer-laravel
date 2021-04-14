@@ -77,7 +77,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "AppSeeds\\DeferLaravel\\DeferLaravelServiceProvider"
+                "AppSeeds\\DeferLaravel\\DeferServiceProvider"
             ]
         }
     }
