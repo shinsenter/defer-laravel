@@ -9,8 +9,7 @@
 - **License**: [MIT](https://raw.githubusercontent.com/shinsenter/defer-laravel/master/LICENSE)
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/shinsenter/defer-laravel.svg?style=flat-square)](https://packagist.org/packages/shinsenter/defer-laravel)
-[![Build Status](https://img.shields.io/travis/shinsenter/defer-laravel/master.svg?style=flat-square)](https://travis-ci.org/shinsenter/defer-laravel)
-[![Quality Score](https://img.shields.io/scrutinizer/g/shinsenter/defer-laravel.svg?style=flat-square)](https://scrutinizer-ci.com/g/shinsenter/defer-laravel)
+[![CodeFactor](https://www.codefactor.io/repository/github/shinsenter/defer-laravel/badge)](https://www.codefactor.io/repository/github/shinsenter/defer-laravel)
 [![Total Downloads](https://img.shields.io/packagist/dt/shinsenter/defer-laravel.svg?style=flat-square)](https://packagist.org/packages/shinsenter/defer-laravel)
 
 
