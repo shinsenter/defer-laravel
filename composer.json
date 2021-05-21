@@ -52,7 +52,7 @@
         "illuminate/contracts": ">=5",
         "symfony/http-foundation": ">=2",
         "symfony/http-kernel": ">=2",
-        "shinsenter/defer.php": "^2.3"
+        "shinsenter/defer.php": "^2.4"
     },
     "require-dev": {
         "laravel/framework": ">=5"
