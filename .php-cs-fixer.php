@@ -46,7 +46,6 @@ $rules = [
     'no_binary_string'                    => true,
     'no_empty_phpdoc'                     => true,
     'no_null_property_initialization'     => true,
-    'no_short_echo_tag'                   => true,
     'no_superfluous_elseif'               => true,
     'no_unneeded_curly_braces'            => true,
     'no_useless_else'                     => true,
@@ -54,7 +53,6 @@ $rules = [
     'ordered_class_elements'              => true,
     'ordered_imports'                     => true,
     'php_unit_internal_class'             => true,
-    'php_unit_ordered_covers'             => true,
     'php_unit_test_class_requires_covers' => true,
     'phpdoc_add_missing_param_annotation' => true,
     'phpdoc_order'                        => true,
@@ -93,7 +91,7 @@ $finder = \PhpCsFixer\Finder::create()
     ->ignoreDotFiles(true)
     ->ignoreVCS(true);
 
-return \PhpCsFixer\Config::create()
+return (new \PhpCsFixer\Config())
     ->setFinder($finder)
     ->setRules($rules)
     ->setLineEnding("\n")

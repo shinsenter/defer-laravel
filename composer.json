@@ -55,6 +55,7 @@
         "shinsenter/defer.php": "^2.4"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": ">=2",
         "laravel/framework": ">=5"
     },
     "suggest": {
@@ -66,9 +67,10 @@
         }
     },
     "scripts": {
+        "fixer": "php-cs-fixer fix --show-progress=dots --verbose --ansi",
         "pull": [
             "rm -rf ./vendor/ ./composer.lock",
-            "composer update -o -a -n --no-dev --prefer-dist --ansi"
+            "composer update -o -a -n --prefer-dist --ansi"
         ]
     },
     "config": {
