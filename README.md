@@ -46,7 +46,7 @@ Require the `shinsenter/defer-laravel` package
 in your `composer.json` and update your dependencies:
 
 ```sh
-composer require "shinsenter/defer-laravel"
+composer require shinsenter/defer-laravel
 ```
 
 
